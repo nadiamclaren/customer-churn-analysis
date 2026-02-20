@@ -1,0 +1,9 @@
+SELECT 
+    b.Contract,
+    c.Churn,
+    COUNT(*) AS customers,
+    ROUND(AVG(CAST(b.MonthlyCharges AS FLOAT)), 2) AS avg_monthly_charge
+FROM churn c
+JOIN billing b ON c.customerID = b.customerID
+GROUP BY b.Contract, c.Churn
+ORDER BY b.Contract, c.Churn;

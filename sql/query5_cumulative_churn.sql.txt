@@ -1,0 +1,16 @@
+WITH monthly AS (
+    SELECT 
+        cu.tenure,
+        COUNT(*) AS total_at_tenure,
+        SUM(CASE WHEN ch.Churn = 'Yes' THEN 1 ELSE 0 END) AS churned_at_tenure
+    FROM customers cu
+    JOIN churn ch ON cu.customerID = ch.customerID
+    GROUP BY cu.tenure
+)
+SELECT 
+    tenure,
+    churned_at_tenure,
+    SUM(churned_at_tenure) OVER (ORDER BY tenure) AS cumulative_churned,
+    ROUND(churned_at_tenure * 100.0 / total_at_tenure, 2) AS churn_rate_at_tenure
+FROM monthly
+ORDER BY tenure;
