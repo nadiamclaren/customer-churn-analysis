@@ -1,7 +1,7 @@
 # Customer Churn Analysis
 
 ## Overview
-Analysis of 7,043 telecom customers to identify churn drivers and 
+My adaptation of some old uni coursework! Analysis of 7,043 telecom customers to identify churn drivers and 
 at-risk segments, using SQL, R, and Tableau.
 
 **Tools:** SQLite (DB Browser), R (tidyverse, ggplot2), Tableau Public  
